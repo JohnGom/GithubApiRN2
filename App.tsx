@@ -6,10 +6,6 @@ import Router from './src/route';
 import { AuthContextProvider } from './src/context/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
