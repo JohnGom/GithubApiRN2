@@ -3,7 +3,7 @@ import type {PropsWithChildren} from 'react';
 import {useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Router from './src/route';
-import { AuthContextProvider } from './src/context/index';
+import { AuthContextProvider } from './src/context/auth/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function App(): React.JSX.Element {

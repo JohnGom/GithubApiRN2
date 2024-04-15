@@ -1,9 +1,8 @@
 export type ApiToken = string;
 
 export interface ApiUser {
-    id?: string;
-    userName: string;
-    firstName: string;
-    lastName: string;
-    isLoggedIn: boolean
-};
+  uid?: string;
+  email?: string | undefined | null;
+  displayName?: string | undefined | null;
+  isLoggedIn: boolean;
+}

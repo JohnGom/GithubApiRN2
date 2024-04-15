@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { AuthContext, AuthContextAction, AuthContextData } from './AuthContext';
-import { ApiToken } from '../models/AuthModel';
+import { ApiToken } from '../../models/AuthModel';
 
 const logoutData = (currentUser: any): any => {
   const userInfo = { ...currentUser, isLoggedIn: false } 

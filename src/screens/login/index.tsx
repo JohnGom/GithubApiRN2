@@ -1,75 +1,63 @@
-import React, { useState } from 'react'
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import React, {useEffect, useState} from 'react';
+import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './style';
-import auth from '@react-native-firebase/auth'
-import { useAuthActions } from '../../context/index'
+import {useAuthActions, useAuthState} from '../../context/auth/index';
 import LoadingComponent from '../../components/LoadingComponent';
 
-const LoginScreen = () => {
-  const [isLoading, setLoading] = useState(false);
+const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useAuthActions()
+  const {login} = useAuthActions();
+  const {loading, currentUser} = useAuthState();
 
   const onPressLogIn = () => {
-    auth()
-      .createUserWithEmailAndPassword(username, password)
-      .then(() => {
-        login({ email: username, password: password })
-      })
-  }
+    login({email: username, password});
+  };
+
+  useEffect(() => {
+    if (!loading && currentUser) {
+      navigation.navigate('home');
+    }
+  }, [loading, currentUser, navigation]);
 
   return (
     <View style={styles.viewContainer}>
-      <Icon
-        name='people'
-        style={styles.iconLogo}
-      />
+      <Icon name="people" style={styles.iconLogo} />
       <View style={styles.viewForm}>
         <View style={styles.textInputView}>
-          <Icon
-            name='person'
-            style={styles.icon}
-          />
+          <Icon name="person" style={styles.icon} />
           <TextInput
             placeholder="Usuario"
             placeholderTextColor="#00000060"
-            underlineColorAndroid='transparent'
+            underlineColorAndroid="transparent"
             value={username}
-            onChangeText={(value) => setUsername(value)}
+            onChangeText={value => setUsername(value)}
             style={styles.textInput}
           />
         </View>
         <View style={styles.textInputView}>
-          <Icon
-            name='lock'
-            style={styles.icon}
-          />
+          <Icon name="lock" style={styles.icon} />
           <TextInput
             placeholder="Contraseña"
             placeholderTextColor="#00000060"
             secureTextEntry
-            underlineColorAndroid='transparent'
+            underlineColorAndroid="transparent"
             value={password}
-            onChangeText={(value) => setPassword(value)}
+            onChangeText={value => setPassword(value)}
             style={styles.textInput}
           />
         </View>
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={onPressLogIn}
-          style={styles.btnLogin}
-        >
-          <Text style={styles.textBtnLogin}>
-            INICIAR SESIÓN
-          </Text>
+          style={styles.btnLogin}>
+          <Text style={styles.textBtnLogin}>INICIAR SESIÓN</Text>
         </TouchableOpacity>
       </View>
-      {isLoading ? <LoadingComponent /> : null}
+      {loading ? <LoadingComponent /> : null}
     </View>
-  )
-}
+  );
+};
 
-
-export default LoginScreen
+export default LoginScreen;
