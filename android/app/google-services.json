@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1042003757454",
+    "project_id": "githubapp-af20a",
+    "storage_bucket": "githubapp-af20a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042003757454:android:fa35a1dffe501b86867cdf",
+        "android_client_info": {
+          "package_name": "com.githubapirn2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhPjFjgP-cp-Icc2kV0Plzvu6M3CvWxj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
