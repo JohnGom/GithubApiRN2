@@ -33,6 +33,7 @@ export const useAuthActions = () => {
             });
           })
           .catch(error => {
+            console.log('entra aquiii')
             return dispatch({
               type: 'LOGOUT',
             });
