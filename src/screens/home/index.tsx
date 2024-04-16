@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import styles from './style';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -22,7 +15,6 @@ const HomeScreen = ({navigation}) => {
   }, [getUsers]);
 
   useEffect(() => {
-    console.log(users);
     if (users === undefined) {
       setIsEmpty(true);
     }
@@ -30,32 +22,29 @@ const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.viewContainer}>
       <View style={styles.viewHeader}>
-        <Text>
-          <Text style={styles.textTitle}>Lista de usuarios</Text>
-        </Text>
-        <Text>
-          <TouchableOpacity onPress={() => navigation.navigate('newUser')}>
-            <Icon name="person-add" />
-          </TouchableOpacity>
-        </Text>
+        <Text style={styles.textTitle}>Usuarios</Text>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate('newUser')}
+          style={styles.btnAdd}>
+          <Icon name="add" color={'white'} size={30} />
+        </TouchableOpacity>
       </View>
-      {isEmpty ? (
+      {!isEmpty ? (
         <View style={styles.viewEmptyResult}>
-          <Icon name="md-people" style={styles.iconEmpty} />
+          <Icon name={'info'} size={100} color={'lightgray'} />
           <Text style={styles.textTitleEmpty}>Aún no hay usuarios creados</Text>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => navigation.navigate('newUser')}
-            style={styles.btnNewUser}>
-            <Text style={styles.textTitle}>Crear nuevo usuario</Text>
-          </TouchableOpacity>
         </View>
-      ) : null}
-      <FlatList
-        data={users}
-        renderItem={({item}) => <ItemUserComponent user={item} />}
-        keyExtractor={(item, index) => `${item.userGithub} ${index}`}
-      />
+      ) : (
+        <FlatList
+          data={users}
+          ItemSeparatorComponent={() => (
+            <View style={styles.viewItemSeparator} />
+          )}
+          renderItem={({item}) => <ItemUserComponent user={item} />}
+          keyExtractor={(item, index) => `${item.userGithub} ${index}`}
+        />
+      )}
     </View>
   );
 };

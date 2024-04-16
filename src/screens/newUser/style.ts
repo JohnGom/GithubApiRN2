@@ -1,6 +1,4 @@
-import React from 'react-native';
-
-const { StyleSheet, Dimensions } = React;
+import {StyleSheet, Dimensions} from 'react-native';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -9,11 +7,11 @@ export default StyleSheet.create({
   /**Start Header Styles**/
   viewContainer: {
     flex: 1,
-    backgroundColor: '#FCFCFC',
+    backgroundColor: '#F5F5F5',
   },
   scrollView: {
     flex: 1,
-    backgroundColor: '#FCFCFC',
+    backgroundColor: '#F5F5F5',
   },
   viewHeader: {
     height: deviceWidth / 3,

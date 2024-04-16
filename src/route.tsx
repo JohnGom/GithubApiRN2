@@ -16,7 +16,11 @@ const Router = () => {
           component={LoginScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="home" component={HomeScreen} />
+        <Stack.Screen
+          name="home"
+          component={HomeScreen}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="newUser"
           component={NewUserScreen}
