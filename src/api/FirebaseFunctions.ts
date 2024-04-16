@@ -1,4 +1,5 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import {Credentials} from '../context/auth/AuthContext';
 
 export async function signInFirebase(
@@ -17,5 +18,15 @@ export async function signInFirebase(
     if (_onError) {
       _onError();
     }
+  }
+}
+
+export async function getUsersFirebase() {
+  try {
+    const users = await firestore().collection('Users').get();
+
+    return users;
+  } catch (error) {
+    
   }
 }

@@ -3,11 +3,12 @@ import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from '
 import React, { useState } from 'react'
 import styles from './style'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { useNavigation } from '@react-navigation/native'
+import ItemUserComponent from './itemUser'
+import { useUsersState } from '../../context/users'
 
 const HomeScreen = ({ navigation }) => {
   const [isEmpty, setIsEmpty] = useState(false)
-
+  const {users} = useUsersState
     return (
       <View style={styles.viewContainer}>
         <View
