@@ -1,12 +1,15 @@
 import { createContext } from "react";
 import { Users } from "../../models/UsersModel";
+import { RepoUser } from "../../models/GithubModel";
 
 export type UsersContextAction =
   | {type: 'USERS_FETCH'; users: Users }
   | {type: 'SAVE_USER' }
+  | {type: 'REPOS_USER'; repos: RepoUser[] }
 
 export interface UsersContextData {
   users?: Users;
+  repos?: RepoUser[]
 }
 export interface UsersContextValue extends UsersContextData {
   dispatch: (action: UsersContextAction) => void;

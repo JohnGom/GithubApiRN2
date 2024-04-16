@@ -1,15 +1,28 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import styles from './style'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import UserDetailScreen from './userDetail'
+import ReposList from './repos'
 
 const UserInfoScreen = () => {
     const [currentTab, setCurrentTab] = useState(0)
-
+    const [searchInput, setSearchInput] = useState('')
+    const [iconClearVisible, setIconClear] = useState(false)
     function changeTab(num: number) {
         setCurrentTab(num);
       }
 
+      const onPressIconClear = () => {
+        setSearchInput('')
+      }
+      const onButtonSearchPress = () => {
+        
+      }
+    
+      const searchInputTextDidChange = (text) =>{
+        
+      }
     return (
         <View>
           <View
@@ -52,7 +65,7 @@ const UserInfoScreen = () => {
             </View>
             <View style={styles.viewRight}>
               {currentTab === 2 ?
-                  <TouchableOpacity onPress={this.orderList}>
+                  <TouchableOpacity onPress={}>
                     <Icon name="funnel" />
                   </TouchableOpacity>
                 :
@@ -61,7 +74,7 @@ const UserInfoScreen = () => {
             </View>
           </View>
           {currentTab === 1 ?
-              <InfoUserComponent user={this.props.user} />
+              <UserDetailScreen user={user} />
             :
               <View style={styles.viewContent}>
                   <View style={styles.viewSearch}>
@@ -71,23 +84,21 @@ const UserInfoScreen = () => {
                       placeholder="Buscar Repositorios"
                       returnKeyType="search"
                       underlineColorAndroid='transparent'
-                      onSubmitEditing={this.onButtonSearchPress.bind(this)}
-                      onChangeText={(text) => this.searchInputTextDidChange(text)}
-                      value={this.state.searchInputText}
+                      onChangeText={(text) => searchInputTextDidChange(text)}
+                      value={searchInput}
                       style={styles.textInputSearch}
                     />
-                    {this.state.iconClearVisible ?
-                        <TouchableOpacity onPress={this.onPressIconClear.bind(this)}>
+                    {iconClearVisible ?
+                        <TouchableOpacity onPress={onPressIconClear}>
                           <Icon
-                            ios='ios-close-circle'
-                            android='md-close-circle'
+                            name='md-close-circle'
                           />
                         </TouchableOpacity>
                       :
                         null
                     }
                   </View>
-                <ReposUserComponent />
+                <ReposList />
               </View>
           }
         </View>

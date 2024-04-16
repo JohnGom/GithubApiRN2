@@ -2,12 +2,14 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './style';
+import { useNavigation } from '@react-navigation/native';
 
 const ItemUserComponent = ({user}) => {
     const { avatarUrl, name, lastname, userGithub } = user;
+    const {navigate} = useNavigation()
     return (
       <TouchableOpacity
-        onPress={() => {  }}
+        onPress={() => { navigate('userInfo', user) }}
       >
         <View>
           <Image source={{ uri: avatarUrl }} />
