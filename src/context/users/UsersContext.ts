@@ -8,13 +8,16 @@ export type UsersContextAction =
   | {type: 'REPOS_USER'; repos: RepoUser[]};
 
 export interface UsersContextData {
-  users?: Users;
+  users: Users;
   repos?: RepoUser[];
+  saved: boolean;
 }
 export interface UsersContextValue extends UsersContextData {
   dispatch: (action: UsersContextAction) => void;
 }
 
 export const UsersContext = createContext<UsersContextValue>({
+  users: [],
+  saved: false,
   dispatch: () => {},
 });

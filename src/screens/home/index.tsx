@@ -19,7 +19,7 @@ const HomeScreen = ({navigation}: Props) => {
   }, [getUsers]);
 
   useEffect(() => {
-    if (users === undefined) {
+    if (!users) {
       setIsEmpty(true);
     }
   }, [users, setIsEmpty]);

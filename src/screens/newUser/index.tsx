@@ -5,11 +5,11 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import DatePicker from 'react-native-date-picker';
-import {useUsersActions} from '../../context/users';
+import {useUsersActions, useUsersState} from '../../context/users';
 import {getUserGithub} from '../../api/GithubApi';
 import styles from './style';
 import {RootStackParamList} from '../../route';
@@ -23,7 +23,15 @@ const NewUserScreen = ({navigation}: Props) => {
   const [birthdate, setBirthdate] = useState(new Date());
   const [email, setEmail] = useState('');
   const [userGithub, setUserGithub] = useState('');
-  const {saveUser} = useUsersActions();
+  const {saveUser, getUsers} = useUsersActions();
+  const {saved} = useUsersState();
+
+  useEffect(() => {
+    if (saved) {
+      getUsers();
+      navigation.pop();
+    }
+  }, [saved, getUsers, navigation]);
 
   const saveNewUser = async () => {
     try {

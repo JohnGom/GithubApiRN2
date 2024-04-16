@@ -5,14 +5,15 @@ import {User} from '../../models/UsersModel';
 import {getUserGithubRepositories} from '../../api/GithubApi';
 
 export const useUsersState = () => {
-  const {users, repos} = useContext(UsersContext);
+  const {users, repos, saved} = useContext(UsersContext);
 
   return useMemo(
     () => ({
       users,
       repos,
+      saved,
     }),
-    [users, repos],
+    [users, repos, saved],
   );
 };
 

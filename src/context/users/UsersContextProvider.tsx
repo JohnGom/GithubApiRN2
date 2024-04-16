@@ -15,11 +15,13 @@ export default function UsersContextProvider(props: {
       case 'USERS_FETCH':
         return {
           ...state,
+          saved: false,
           users: action.users,
         };
       case 'SAVE_USER':
         return {
           ...state,
+          saved: true,
         };
       case 'REPOS_USER':
         return {
