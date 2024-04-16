@@ -17,7 +17,11 @@ const Router = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen name="home" component={HomeScreen} />
-        <Stack.Screen name="newUser" component={NewUserScreen} />
+        <Stack.Screen
+          name="newUser"
+          component={NewUserScreen}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

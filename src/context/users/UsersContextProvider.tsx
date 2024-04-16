@@ -8,7 +8,7 @@ import {
 export default function UsersContextProvider(props: {
   children: React.ReactNode;
 }) {
-  const [authState, dispatch] = React.useReducer<
+  const [userStateState, dispatch] = React.useReducer<
     React.Reducer<UsersContextData, UsersContextAction>
   >((state, action) => {
     switch (action.type) {
@@ -23,7 +23,7 @@ export default function UsersContextProvider(props: {
   }, {} as UsersContextData);
 
   return (
-    <UsersContext.Provider value={{...authState, dispatch}}>
+    <UsersContext.Provider value={{...userStateState, dispatch}}>
       {props.children}
     </UsersContext.Provider>
   );
