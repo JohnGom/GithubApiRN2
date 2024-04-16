@@ -1,12 +1,12 @@
-import { UserGithub } from "../models/GithubModel";
+import {UserGithub} from '../models/GithubModel';
 
-const URL = `https://api.github.com/`
+const URL = 'https://api.github.com/';
 
-export async function getUserGithub(username: string): Promise<UserGithub | undefined> {
-    try {
-      const user: UserGithub = await fetch(`${URL}/users/${username}`)
-      return user;
-    } catch (error) {
-        
-    }
-  }
+export async function getUserGithub(
+  username: string,
+): Promise<UserGithub | undefined> {
+  try {
+    const response = await fetch(`${URL}/users/${username}`);
+    return response.json();
+  } catch (error) {}
+}

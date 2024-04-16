@@ -18,7 +18,8 @@ const NewUserScreen = ({navigation}) => {
   const saveNewUser = async () => {
     try {
       const userInfo = await getUserGithub(userGithub)
-      if(userInfo) {
+      console.log("llega", userInfo)
+      if (userInfo) {
         saveUser({
           name, 
           lastname, 
@@ -26,13 +27,13 @@ const NewUserScreen = ({navigation}) => {
           email, 
           userGithub, 
           birthdate: birthdate.toLocaleDateString(),
-          avatarUrl: userInfo.avatar_url,
-          url: userInfo.url, 
-          repos: userInfo.public_repos
+          avatarUrl: userInfo.avatar_url ?? '',
+          url: userInfo.url ?? '', 
+          repos: userInfo.public_repos ?? 0
         })
       }
     } catch (error) {
-      
+      console.log('error', error);
     }
     
   };

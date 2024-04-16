@@ -22,14 +22,16 @@ export const useUsersActions = () => {
       async getUsers() {
         try {
           const users = await getUsersFirebase();
-          return dispatch({type: "USERS_FETCH", users: []})
+          if(users) {
+            return dispatch({type: 'USERS_FETCH', users})
+          }
         } catch (error) {}
       },
 
       async saveUser(user: User) {
         try {
           await saveUsersFirebase(user)
-          return dispatch({type: "USERS_FETCH", users: []})
+          return dispatch({type: 'SAVE_USER'})
         } catch (error) {
           
         }
