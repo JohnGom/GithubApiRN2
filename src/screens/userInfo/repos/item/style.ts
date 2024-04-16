@@ -4,21 +4,24 @@ const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
 export default StyleSheet.create({
-  viewContainPagination: {
-    flex: 0,
+  infoLanguage: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8
-  },
-  textPag: {
-    fontSize: 16,
     marginLeft: 10,
-    marginRight: 10
-  },
-  btnPagination: {
-    justifyContent: 'center',
+    marginRight: 10,
     alignItems: 'center',
-    width: 30
-  }
+  },
+  textLan: {
+    marginLeft: 10
+  },
+  containerItems: {
+    marginLeft: 10,
+    marginBottom: 5
+  },
+  texttitleUrl: {
+    fontSize: 13
+  },
+  titleDescription: {
+    fontSize: 15,
+    fontWeight: 'bold'
+  },
 });
