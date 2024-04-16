@@ -10,7 +10,7 @@ const Router = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="login" component={LoginScreen} />
+                <Stack.Screen name="login" component={LoginScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="home" component={HomeScreen} />
                 <Stack.Screen name="newUser" component={NewUserScreen} />
             </Stack.Navigator>

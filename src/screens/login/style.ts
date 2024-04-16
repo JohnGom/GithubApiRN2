@@ -4,33 +4,51 @@ const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
 export default StyleSheet.create({
-  viewContainer: {
+  viewTop: {
+    height: deviceWidth / 2,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'black',
   },
-    iconLogo: {
-      fontSize: deviceWidth / 5,
-      color: '#25292E',
-    },
-    viewForm: {
-      flex: 0,
-      marginTop: deviceHeight / 50,
-      paddingVertical: deviceHeight / 20,
-      paddingHorizontal: deviceWidth / 20,
-    },
+  viewContainer: {
+    backgroundColor: '#f1f1f1',
+  },
+  iconLogo: {
+    fontSize: deviceWidth / 5,
+    color: 'white',
+  },
+  viewFormContain: {
+    flex: 0,
+    backgroundColor: 'black',
+  },
+  viewForm: {
+    flex: 1,
+    padding: 25,
+    alignItems: 'center',
+    borderTopLeftRadius: deviceWidth / 6,
+    overflow: 'hidden',
+    backgroundColor: '#f1f1f1',
+  },
+  textTitle: {
+    fontSize: 30,
+    marginVertical: 25,
+    color: 'black',
+  },
       textInputView: {
         flex: 0,
         flexDirection: 'row',
-        width: deviceWidth / 1.5,
+        width: deviceWidth - 50,
+        height: 50,
         alignItems: 'center',
         justifyContent: 'center',
         marginVertical: deviceHeight / 100,
         paddingHorizontal: deviceWidth / 50,
         borderWidth: 0.5,
         borderColor: '#25292E20',
-        borderRadius: deviceWidth,
-        backgroundColor: '#F1F1F1',
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        backgroundColor: 'white',
       },
         icon: {
           margin: deviceWidth / 50,
@@ -42,16 +60,18 @@ export default StyleSheet.create({
           backgroundColor: 'transparent',
         },
       btnLogin: {
-        flex: 0,
-        alignSelf: 'center',
+        flex: 1,
         marginVertical: deviceHeight / 20,
-        paddingVertical: deviceHeight / 50,
-        paddingHorizontal: deviceWidth / 20,
-        borderRadius: deviceWidth,
-        backgroundColor: '#39C758',
+        width: deviceWidth - 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 50,
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        backgroundColor: 'black',
       },
         textBtnLogin: {
-          fontWeight: 'bold',
           color: '#FFFFFF',
         },
 });
