@@ -1,5 +1,5 @@
 import {createContext} from 'react';
-import { ApiUser, ApiToken } from '../../models/AuthModel';
+import {ApiUser, ApiToken} from '../../models/AuthModel';
 
 export interface AuthUser extends ApiUser {}
 export type AuthContextAction =

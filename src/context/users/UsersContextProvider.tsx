@@ -17,6 +17,15 @@ export default function UsersContextProvider(props: {
           ...state,
           users: action.users,
         };
+      case 'SAVE_USER':
+        return {
+          ...state,
+        };
+      case 'REPOS_USER':
+        return {
+          ...state,
+          repos: action.repos,
+        };
       default:
         return state;
     }

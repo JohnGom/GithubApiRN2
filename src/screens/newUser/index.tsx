@@ -1,41 +1,50 @@
-import {View, Text, TextInput, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import styles from './style';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import DatePicker from 'react-native-date-picker';
-import { useUsersActions } from '../../context/users';
-import { getUserGithub } from '../../api/GithubApi';
+import {useUsersActions} from '../../context/users';
+import {getUserGithub} from '../../api/GithubApi';
+import styles from './style';
+import {RootStackParamList} from '../../route';
 
-const NewUserScreen = ({navigation}) => {
+type Props = NativeStackScreenProps<RootStackParamList, 'NewUser'>;
+
+const NewUserScreen = ({navigation}: Props) => {
   const [name, setName] = useState('');
   const [lastname, setLastname] = useState('');
   const [identification, setIdentification] = useState('');
   const [birthdate, setBirthdate] = useState(new Date());
   const [email, setEmail] = useState('');
   const [userGithub, setUserGithub] = useState('');
-  const {saveUser} = useUsersActions()
+  const {saveUser} = useUsersActions();
 
   const saveNewUser = async () => {
     try {
-      const userInfo = await getUserGithub(userGithub)
-      console.log("llega", userInfo)
+      const userInfo = await getUserGithub(userGithub);
+      console.log('llega', userInfo);
       if (userInfo) {
         saveUser({
-          name, 
-          lastname, 
-          identification, 
-          email, 
-          userGithub, 
+          name,
+          lastname,
+          identification,
+          email,
+          userGithub,
           birthdate: birthdate.toLocaleDateString(),
           avatarUrl: userInfo.avatar_url ?? '',
-          url: userInfo.url ?? '', 
-          repos: userInfo.public_repos ?? 0
-        })
+          url: userInfo.url ?? '',
+          repos: userInfo.public_repos ?? 0,
+        });
       }
     } catch (error) {
       console.log('error', error);
     }
-    
   };
   return (
     <View style={styles.viewContainer}>
@@ -48,7 +57,7 @@ const NewUserScreen = ({navigation}) => {
         </TouchableOpacity>
         <Text style={styles.textTitle}>Crear nuevo usuario</Text>
       </View>
-      <ScrollView style={styles.viewForm} overScrollMode='never'>
+      <ScrollView style={styles.viewForm} overScrollMode="never">
         <View style={styles.viewFormContain}>
           <View style={styles.textInputView}>
             <Icon name="person" size={18} color={'black'} />
@@ -109,7 +118,7 @@ const NewUserScreen = ({navigation}) => {
             />
           </View>
           <View style={styles.textInputView}>
-          <Icon name="bug-report" size={18} color={'black'} />
+            <Icon name="bug-report" size={18} color={'black'} />
             <TextInput
               returnKeyType="done"
               placeholder="Usuario github"

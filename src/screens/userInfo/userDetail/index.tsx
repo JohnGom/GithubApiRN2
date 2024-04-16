@@ -1,10 +1,14 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { StyleSheet, Text, View, Image, Linking, TouchableOpacity } from 'react-native';
+import {Text, View, Image, Linking, TouchableOpacity} from 'react-native';
 import styles from './style';
+import {User} from '../../../models/UsersModel';
 
-const UserDetailScreen = ({ route }) => {
-  const { user } = route.params;
+type Props = {
+  user: User;
+};
+
+const UserDetailScreen: React.FC<Props> = ({user}) => {
   const {
     name,
     lastname,
@@ -14,82 +18,57 @@ const UserDetailScreen = ({ route }) => {
     userGithub,
     avatarUrl,
     url,
-    repos
+    repos,
   } = user;
   return (
-    <View style={StyleSheet.flatten(styles.viewContainer)}>
-      <View style={StyleSheet.flatten(styles.viewContentAvatar)}>
-        <Image
-          source={{ uri: avatarUrl }}
-          style={StyleSheet.flatten(styles.imgAvatar)}
-        />
-        <Text style={StyleSheet.flatten(styles.textName)}>
+    <View style={styles.viewContainer}>
+      <View style={styles.viewContentAvatar}>
+        <Image source={{uri: avatarUrl}} style={styles.imgAvatar} />
+        <Text style={styles.textName}>
           {name} {lastname}
         </Text>
-        <Text style={StyleSheet.flatten(styles.textNick)}>
-          {userGithub}
-        </Text>
+        <Text style={styles.textNick}>{userGithub}</Text>
       </View>
-      <View style={StyleSheet.flatten(styles.viewContentDescription)}>
-        <View style={StyleSheet.flatten(styles.viewItemDescription)}>
-          <View style={StyleSheet.flatten(styles.viewIconDescription)}>
-            <Icon
-              name='md-mail'
-              style={StyleSheet.flatten(styles.iconDescription)}
-            />
+      <View style={styles.viewContentDescription}>
+        <View style={styles.viewItemDescription}>
+          <View style={styles.viewIconDescription}>
+            <Icon name="mail" style={styles.iconDescription} />
           </View>
-          <Text style={StyleSheet.flatten(styles.textDescription)}>
-            {email}
-          </Text>
+          <Text style={styles.textDescription}>{email}</Text>
         </View>
-        <View style={StyleSheet.flatten(styles.viewItemDescription)}>
-          <View style={StyleSheet.flatten(styles.viewIconDescription)}>
-            <Icon
-              name='md-finger-print'
-              style={StyleSheet.flatten(styles.iconDescription)}
-            />
+        <View style={styles.viewItemDescription}>
+          <View style={styles.viewIconDescription}>
+            <Icon name="fingerprint" style={styles.iconDescription} />
           </View>
-          <Text style={StyleSheet.flatten(styles.textDescription)}>
-            {identification}
-          </Text>
+          <Text style={styles.textDescription}>{identification}</Text>
         </View>
-        <View style={StyleSheet.flatten(styles.viewItemDescription)}>
-          <View style={StyleSheet.flatten(styles.viewIconDescription)}>
-            <Icon
-              name='md-calendar'
-              style={StyleSheet.flatten(styles.iconDescription)}
-            />
+        <View style={styles.viewItemDescription}>
+          <View style={styles.viewIconDescription}>
+            <Icon name="event" style={styles.iconDescription} />
           </View>
-          <Text style={StyleSheet.flatten(styles.textDescription)}>
-            {birthdate}
-          </Text>
+          <Text style={styles.textDescription}>{birthdate}</Text>
         </View>
-        <View style={StyleSheet.flatten(styles.viewItemDescription)}>
-          <View style={StyleSheet.flatten(styles.viewIconDescription)}>
-            <Icon
-              name='logo-github'
-              style={StyleSheet.flatten(styles.iconDescription)}
-            />
+        <View style={styles.viewItemDescription}>
+          <View style={styles.viewIconDescription}>
+            <Icon name="link" style={styles.iconDescription} />
           </View>
-          <TouchableOpacity onPress={() => { Linking.openURL(url); }}>
-            <Text style={StyleSheet.flatten(styles.textUrl)}>
-              {url}
-            </Text>
+          <TouchableOpacity
+            onPress={() => {
+              if (url) {
+                Linking.openURL(url);
+              }
+            }}>
+            <Text style={styles.textUrl}>{url}</Text>
           </TouchableOpacity>
         </View>
-        <View style={StyleSheet.flatten(styles.viewItemDescription)}>
-          <View style={StyleSheet.flatten(styles.viewIconDescription)}>
-            <Icon
-              name='md-git-branch'
-              style={StyleSheet.flatten(styles.iconDescription)}
-            />
+        <View style={styles.viewItemDescription}>
+          <View style={styles.viewIconDescription}>
+            <Icon name="dns" style={styles.iconDescription} />
           </View>
-          <Text style={StyleSheet.flatten(styles.textDescription)}>
-            {repos}
-          </Text>
+          <Text style={styles.textDescription}>{repos}</Text>
         </View>
       </View>
     </View>
   );
-}
+};
 export default UserDetailScreen;

@@ -1,11 +1,15 @@
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import styles from './style';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import ItemUserComponent from './itemUser';
 import {useUsersActions, useUsersState} from '../../context/users';
+import styles from './style';
+import {RootStackParamList} from '../../route';
 
-const HomeScreen = ({navigation}) => {
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+
+const HomeScreen = ({navigation}: Props) => {
   const [isEmpty, setIsEmpty] = useState(false);
   const {users} = useUsersState();
   const {getUsers} = useUsersActions();
@@ -25,7 +29,7 @@ const HomeScreen = ({navigation}) => {
         <Text style={styles.textTitle}>Usuarios</Text>
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => navigation.navigate('newUser')}
+          onPress={() => navigation.navigate('NewUser')}
           style={styles.btnAdd}>
           <Icon name="add" color={'white'} size={30} />
         </TouchableOpacity>
@@ -38,9 +42,7 @@ const HomeScreen = ({navigation}) => {
       ) : (
         <FlatList
           data={users}
-          ItemSeparatorComponent={() => (
-            <View style={styles.viewItemSeparator} />
-          )}
+          ItemSeparatorComponent={() => (<View style={styles.viewItemSeparator} />)}
           renderItem={({item}) => <ItemUserComponent user={item} />}
           keyExtractor={(item, index) => `${item.userGithub} ${index}`}
         />

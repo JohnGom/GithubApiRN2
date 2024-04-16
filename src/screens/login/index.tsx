@@ -7,11 +7,15 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import styles from './style';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useAuthActions, useAuthState} from '../../context/auth/index';
 import LoadingComponent from '../../components/LoadingComponent';
+import styles from './style';
+import {RootStackParamList} from '../../route';
 
-const LoginScreen = ({navigation}) => {
+type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
+
+const LoginScreen = ({navigation}: Props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const {login} = useAuthActions();
@@ -23,7 +27,7 @@ const LoginScreen = ({navigation}) => {
 
   useEffect(() => {
     if (!loading && currentUser) {
-      navigation.navigate('home');
+      navigation.navigate('Home');
     }
   }, [loading, currentUser, navigation]);
 

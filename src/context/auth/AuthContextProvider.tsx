@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { AuthContext, AuthContextAction, AuthContextData } from './AuthContext';
-import { ApiToken } from '../../models/AuthModel';
+import React, {useEffect} from 'react';
+import {AuthContext, AuthContextAction, AuthContextData} from './AuthContext';
+import {ApiToken} from '../../models/AuthModel';
 
 const logoutData = (currentUser: any): any => {
-  const userInfo = { ...currentUser, isLoggedIn: false } 
-  return userInfo
-}
+  const userInfo = {...currentUser, isLoggedIn: false};
+  return userInfo;
+};
 
 export default function AuthContextProvider(props: {
   children: React.ReactNode;
@@ -48,10 +48,11 @@ export default function AuthContextProvider(props: {
     }
   }, {} as AuthContextData);
   useEffect(() => {
-    props.storage.get().then(mockedUser  => { // token => {
+    props.storage.get().then(mockedUser => {
+      // token => {
       if (mockedUser) {
-        const currentUser = JSON.parse(mockedUser)
-        dispatch({type: 'GOT_TOKEN', currentUser });
+        const currentUser = JSON.parse(mockedUser);
+        dispatch({type: 'GOT_TOKEN', currentUser});
       } else {
         dispatch({type: 'NO_USER'});
       }

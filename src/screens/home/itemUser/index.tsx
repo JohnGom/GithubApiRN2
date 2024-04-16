@@ -1,14 +1,21 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native'
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
 import styles from './style';
+import {User} from '../../../models/UsersModel';
+import {RootStackParamList} from '../../../route';
 
-const ItemUserComponent = ({user}) => {
+type Props = NativeStackNavigationProp<RootStackParamList>;
+
+const ItemUserComponent = ({user}: {user: User}) => {
   const {avatarUrl, name, lastname, userGithub} = user;
+  const {navigate} = useNavigation<Props>();
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      onPress={() => console.log('')}
+      onPress={() => navigate('UserInfo', {user})}
       style={styles.viewContainer}>
       <Image
         source={{uri: avatarUrl}}

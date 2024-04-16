@@ -1,9 +1,10 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
-const deviceWidth = Dimensions.get('window').width;
-const deviceHeight = Dimensions.get('window').height;
-
 export default StyleSheet.create({
+  container: {
+    padding: 8,
+    marginVertical: 10,
+  },
   infoLanguage: {
     flexDirection: 'row',
     marginLeft: 10,
@@ -24,4 +25,7 @@ export default StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold'
   },
+  contentRow: {
+    flexDirection: 'row'
+  }
 });

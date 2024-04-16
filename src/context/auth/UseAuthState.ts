@@ -1,6 +1,6 @@
 import {useContext, useMemo} from 'react';
 import {ApiToken, ApiUser} from '../../models/AuthModel';
-import {AuthContext, AuthUser, Credentials} from './AuthContext';
+import {AuthContext, Credentials} from './AuthContext';
 import {signInFirebase} from '../../api/FirebaseFunctions';
 
 export const useAuthState = () => {
@@ -32,8 +32,7 @@ export const useAuthActions = () => {
               user,
             });
           })
-          .catch(error => {
-            console.log('entra aquiii')
+          .catch(() => {
             return dispatch({
               type: 'LOGOUT',
             });

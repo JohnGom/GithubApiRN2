@@ -1,10 +1,9 @@
 import React from 'react';
 import {SafeAreaView, StatusBar} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Router from './src/route';
-import {AuthContextProvider} from './src/context/auth/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { UsersContextProvider } from './src/context/users';
+import {AuthContextProvider} from './src/context/auth/index';
+import {UsersContextProvider} from './src/context/users';
+import Router from './src/route';
 
 function App(): React.JSX.Element {
   const backgroundStyle = {

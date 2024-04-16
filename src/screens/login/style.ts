@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -34,44 +34,44 @@ export default StyleSheet.create({
     marginVertical: 25,
     color: 'black',
   },
-      textInputView: {
-        flex: 0,
-        flexDirection: 'row',
-        width: deviceWidth - 50,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginVertical: deviceHeight / 100,
-        paddingHorizontal: deviceWidth / 50,
-        borderWidth: 0.5,
-        borderColor: '#25292E20',
-        borderTopLeftRadius: 10,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
-        backgroundColor: 'white',
-      },
-        icon: {
-          margin: deviceWidth / 50,
-          color: '#25292E',
-        },
-        textInput: {
-          flex: 1,
-          color: '#25292E',
-          backgroundColor: 'transparent',
-        },
-      btnLogin: {
-        flex: 1,
-        marginVertical: deviceHeight / 20,
-        width: deviceWidth - 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 50,
-        borderTopLeftRadius: 10,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
-        backgroundColor: 'black',
-      },
-        textBtnLogin: {
-          color: '#FFFFFF',
-        },
+  textInputView: {
+    flex: 0,
+    flexDirection: 'row',
+    width: deviceWidth - 50,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: deviceHeight / 100,
+    paddingHorizontal: deviceWidth / 50,
+    borderWidth: 0.5,
+    borderColor: '#25292E20',
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    backgroundColor: 'white',
+  },
+  icon: {
+    margin: deviceWidth / 50,
+    color: '#25292E',
+  },
+  textInput: {
+    flex: 1,
+    color: '#25292E',
+    backgroundColor: 'transparent',
+  },
+  btnLogin: {
+    flex: 1,
+    marginVertical: deviceHeight / 20,
+    width: deviceWidth - 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 50,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    backgroundColor: 'black',
+  },
+  textBtnLogin: {
+    color: '#FFFFFF',
+  },
 });
