@@ -3,6 +3,8 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './style';
 import DatePicker from 'react-native-date-picker';
+import { useUsersActions } from '../../context/users';
+import { getUserGithub } from '../../api/GithubApi';
 
 const NewUserScreen = ({navigation}) => {
   const [name, setName] = useState('');
@@ -11,8 +13,29 @@ const NewUserScreen = ({navigation}) => {
   const [birthdate, setBirthdate] = useState(new Date());
   const [email, setEmail] = useState('');
   const [userGithub, setUserGithub] = useState('');
+  const {saveUser} = useUsersActions()
 
-  const saveNewUser = () => {};
+  const saveNewUser = async () => {
+    try {
+      const userInfo = await getUserGithub(userGithub)
+      if(userInfo) {
+        saveUser({
+          name, 
+          lastname, 
+          identification, 
+          email, 
+          userGithub, 
+          birthdate: birthdate.toLocaleDateString(),
+          avatarUrl: userInfo.avatar_url,
+          url: userInfo.url, 
+          repos: userInfo.public_repos
+        })
+      }
+    } catch (error) {
+      
+    }
+    
+  };
   return (
     <View style={styles.viewContainer}>
       <View style={styles.viewHeader}>

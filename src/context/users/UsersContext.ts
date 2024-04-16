@@ -3,6 +3,7 @@ import { Users } from "../../models/UsersModel";
 
 export type UsersContextAction =
   | {type: 'USERS_FETCH'; users: Users }
+  | {type: 'SAVE_USER' }
 
 export interface UsersContextData {
   users?: Users;
